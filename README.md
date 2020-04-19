@@ -2,4 +2,7 @@
 
 NodeJS + MongoDB API for User Management, Authentication and Registration
 
-For documentation and instructions check out http://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management
+Projet a mettre dans un container docker et mapper la co avec le container mongodb
+
+
+Source : For documentation and instructions check out http://jasonwatmore.com/post/2018/06/14/nodejs-mongodb-simple-api-for-authentication-registration-and-user-management
