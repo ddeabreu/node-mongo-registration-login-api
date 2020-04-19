@@ -1,4 +1,6 @@
 ﻿{
-    "connectionString": "mongodb://localhost/node-mongo-registration-login-api",
-    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+    "connectionString": "mongodb://mongo-api02/mongo_db_api_02",
+    "user_bdd" : "root2",
+    "pass_bdd" : "dda69MongoDB2",
+    "secret": "CECI EST UTILISER POUR SIGNER & VERIFIER LES JWT TOKENS, Je peux METTRE ce QUE je VEUX"
 }

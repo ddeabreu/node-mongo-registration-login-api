@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <title>Front de l API JWT view ejs</title>
+</head>
+
+<body>
+  <h1>Front de l API JWT EJS</h1>
+  <form method="post" action="/users/register">
+    <label for="name">Utilisateur</label>
+    <input type="text" name="username">
+    
+    <label for="name">Mot de Passe</label>
+    <input type="text" name="password">
+    
+        <label for="name">firstName</label>
+    <input type="text" name="firstName">
+    
+        <label for="name">lastName</label>
+    <input type="text" name="lastName">
+    
+    <input type="submit" value="Add">
+  </form>  
+  
+  
+    <form method="post" action="/users/authenticate">
+    <label for="name">Utilisateur</label>
+    <input type="text" name="username">
+    
+    <label for="name">Mot de Passe</label>
+    <input type="text" name="password">
+    
+    <input type="submit" value="LOGIN">
+  </form>  
+  
+</body>
+
+</html>
