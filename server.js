@@ -6,6 +6,16 @@ const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 
+//test mail
+const mailService = require('mail/mail.service');
+//test mail
+
+//test notification
+const notificationService = require('notification/notification.service');
+//test notification
+
+
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -22,9 +32,25 @@ app.use(errorHandler);
 
 app.get('/', (req, res) =>{
 	console.log('/ demandee');	
+	
+/*
+	//test mail
+	mailService.sendMail('mail@mail.fr','register')
+	.then( res_mail => console.log('res_mail: ',res_mail) )
+	.catch(err => next(err));
+	//test mail
+*/
+	
+	
+	//test notif
+	notificationService.sendNotification('mail@mail.fr','register')
+	.then( res_notif => console.log('res_notif: ',res_notif));
+	//fin test notif	
+	
+	
+	////je renvoi une reponse a mon client, soit du html brut soit du template html si j ai un view engine d actif
 	//res.send('<h1>Front de l API JWT</h1><form method="post" action="/users/register"><label for="name">Utilisateur</label><input type="text" name="username"><label for="name">Mot de Passe</label><input type="text" name="password"><input type="submit" value="Add"></form>');
 	res.render("index"); 
-	res.sendStatus(200);
 	
 })
 

@@ -1,6 +1,7 @@
 ﻿const express = require('express');
 const router = express.Router();
 const userService = require('./user.service');
+const mailService = require('../mail/mail.service');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -21,7 +22,19 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json({}))
+        .then(() => {
+	        res.json({});
+	        console.log('res de userService',res);
+	        console.log('req.body de userService',req.body);
+	        
+			//envoi  mail
+			console.log('save ok, envoi de mail');
+			mailService.sendMail(req.body.username,'register')
+			.then( res_mail => console.log('res_mail: ',res_mail) )
+			.catch(err => next(err));
+			//fin envoi mail
+				
+	    })
         .catch(err => next(err));
 }
 

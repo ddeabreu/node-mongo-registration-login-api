@@ -21,7 +21,8 @@
         "jsonwebtoken": "^8.5.1",
         "mongodb": "^3.2.7",
         "mongoose": "^5.6.9",
-        "rootpath": "^0.1.2"
+        "rootpath": "^0.1.2",
+        "sib-api-v3-sdk": "^7.2.2"
     },
     "devDependencies": {
         "nodemon": "^1.19.1"
