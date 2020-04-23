@@ -6,38 +6,72 @@ const User = db.User;
 
 ////lib notif
 const config_notif = require('notification/config_notification.json');
-
+var axios = require('axios');
 
 module.exports = {
     sendNotification
 };
 
 
+
 async function sendNotification(notif_user_token,type_notif) {
 	console.log('enclenchement de la fonction notification');
-	
-	var request = require("request");
-	
-	var options = { method: 'POST',
-	  url: 'https://fcm.googleapis.com/fcm/send',
-	  headers: 
-	   { 'Postman-Token': 'cc27effd-c3d6-4e70-ba08-b110f8ff30d3',
-	     'Cache-Control': 'no-cache',
-	     'Content-Type': 'application/x-www-form-urlencoded',
-	     Authorization: 'key=AAAAWMo6tqM:APA91bGU75m6TawTzBaUnO8jyCiWJ4V8gWTJXTjkDVA-Wbcho_EjJD1RkyN7Cmips2Vyp3sC7JkWns10Zbs82MejiypTXiDIryYJvuzd3D5Jvg7QITrWUP6a9UU-xxCv8LSPvDK4_mPx' },
-	  form: 
-	   { to: 'd6J3Z88Tyjo:APA91bH7TQsUZ1W1QfO3YAQ1S5CRc3s2NdSqk-eTyyefLy5ui5iWOXjwTbiDbCA_eHyOn-IYa69qP2e5ZdFAKk8QW6_Q-FJII8CalA3dTwXi04vZnSTmQqPXJHuDsQMJAHui4eP3dpvZ',
-	     notification: '{\\"body\\":\\"ENTER YOUR MESSAGE HERE\\"}' } };
-	
-	request(options, function (error, response, body) {
-	  if (error) throw new Error(error);
-	
-	  console.log(body);
-	});
 
+	const phoneToken = 'dOBWadPgU5vXe8V7B7IjCB:APA91bEHp4GndK_bBojc8koYx509lz6J6xaGroBIC_ijS6XIQi97TSxx_nG0WUDZ8sMdgfEHjgvayexvv8O2eBffJByn90o8Qy2vuBsQgQCY0CByj5QHLnCKWPuwJtLypy6JUiL5mLlt';//cherie token 
+	
+	const notification = buildNotification(notif_user_token);
+	sendNotification(notification);
+	
+
+	function buildNotification (data) {
+	  const { name } = data;
+	  const message = "hello ca va ?";
+	  const title = "Notif Title 2 ";
+	  
+	  return {
+	    "notification": {
+	      "title":`${title}`,
+	      "text":`${message}`,
+	      "sound":"default"
+	    },
+	    "to":phoneToken,
+	    "priority":"high"
+	  }
+	}
+	
+	function buildRequest (notification) {
+		
+
+	  return {
+	    url: 'https://fcm.googleapis.com/fcm/send',
+	    method: 'post',
+	    headers: {
+	      "Content-Type":"application/json",
+	      "Authorization":`key=${config_notif.fcmKey}`
+	    },
+	    data: notification
+	  }
+	}
+	
+	function sendNotification(notification) {
+	  const request = buildRequest(notification)
+	  axios(request).then((r) => {
+	    //console.log('reponse de FCM -> ',r);
+	    if(r.data.success == 0){
+		    console.log('reponse ko du serveur FCM',r.data);
+	    }else{
+		    console.log('Envoi de notif ok');
+		    console.log('reponse ok du serveur FCM',r.data);
+	    
+	    }
+	  }).catch((error) => {
+	    console.log(error)
+	  })
+	}
 	
 	await 'notif sent ok';
 }
+
 
 
 

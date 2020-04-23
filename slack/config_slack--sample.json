@@ -1,0 +1,5 @@
+{
+    "slack_url": "https://hooks.slack.com/services/XXX/XXX/XXX",
+    "slack_chan" : "tt_com",
+    "slack_name" : "SlackBot"
+}

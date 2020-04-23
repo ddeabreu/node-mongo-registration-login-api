@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <h1>Front de l API JWT EJS</h1>
+  <h1>Front de l API JWT EJS !</h1>
   <form method="post" action="/users/register">
     <label for="name">Utilisateur</label>
     <input type="text" name="username">
@@ -33,6 +33,61 @@
     
     <input type="submit" value="LOGIN">
   </form>  
+  
+<!-- #################################### CODE NOTIF FIREBASE A METTRE SUR UN FRONT ###############################-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
+<!--
+<script src="js/firebase-messaging-sw.js"></script>
+<script src="js/test.js"></script>
+<script src="js/test2.js"></script>
+-->
+<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+	apiKey: "AIzaSyAOtl6eU2zLEK7k45fp-SCeQWB_UU31GLo",
+	authDomain: "notif-api-node-02.firebaseapp.com",
+	databaseURL: "https://notif-api-node-02.firebaseio.com",
+	projectId: "notif-api-node-02",
+	storageBucket: "notif-api-node-02.appspot.com",
+	messagingSenderId: "1046035596722",
+	appId: "1:1046035596722:web:61ed511679c69255fc90ab"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	console.log('init de firebase',firebase);
+	
+	const messaging = firebase.messaging();
+	messaging.usePublicVapidKey("BMjn6x3uqqwnjlLFfyCbTV2hqQdVpeoz4NuobCeSEKAOJgJLZ6LXaM0BD1jRvswyY7ZgKeSECOmMORMze70Dz60");
+	
+	
+	console.log('init de firebase messaging',messaging);
+	// Get Instance ID token. Initially this makes a network call, once retrieved
+	// subsequent calls to getToken will return from cache.
+	messaging.getToken().then((currentToken) => {
+		console.log('currentToken ->',currentToken);
+/*
+		if (currentToken) {
+			sendTokenToServer(currentToken);
+			updateUIForPushEnabled(currentToken);
+		} else {
+			// Show permission request.
+			console.log('No Instance ID token available. Request permission to generate one.');
+			// Show permission UI.
+			updateUIForPushPermissionRequired();
+			setTokenSentToServer(false);
+		}
+*/
+	}).catch((err) => {
+		console.log('An error occurred while retrieving token. ', err);
+// 		setTokenSentToServer(false);
+	});
+
+  
+  
+</script>  
+<!-- #################################### CODE NOTIF FIREBASE ###############################-->
   
 </body>
 

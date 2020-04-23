@@ -11,6 +11,11 @@ function jwt() {
             // public routes that don't require authentication
             '/users/authenticate',
             '/users/register',
+            '/firebase-cloud-messaging-push-scope',
+            '/firebase-messaging-sw.js', //si je veux activer les notifs firebase
+            '/js/firebase-messaging-sw.js', //exemple de js lancer sur mon front
+            '/js/test.js',//exemple de js lancer sur mon front
+            '/favicon.ico',
             '/'
         ]
     });

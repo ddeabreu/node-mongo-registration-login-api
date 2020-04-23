@@ -36,3 +36,8 @@ typings
 
 # Optional REPL history
 .node_repl_history
+
+#fichier contenant des cles API et de la config
+mail/config_mail.json
+notification/config_notification.json
+slack/config_slack.json
